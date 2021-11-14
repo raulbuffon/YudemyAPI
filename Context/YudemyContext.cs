@@ -16,8 +16,6 @@ namespace YudemyAPI.Context
 
         public YudemyContext (DbContextOptions<YudemyContext> options)
             : base(options)
-        {}
-
-
+        { }
     }
 }
