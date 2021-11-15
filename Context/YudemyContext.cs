@@ -17,5 +17,21 @@ namespace YudemyAPI.Context
         public YudemyContext (DbContextOptions<YudemyContext> options)
             : base(options)
         { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Author)
+                .WithMany(a => a.Courses)
+                .HasForeignKey(c => c.AuthorId);
+
+            modelBuilder.Entity<Course>()
+                .Property(c => c.Title)
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Course>()
+                .Property(c => c.Description)
+                .HasMaxLength(1000);
+        }
     }
 }
