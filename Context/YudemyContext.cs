@@ -41,6 +41,11 @@ namespace YudemyAPI.Context
                 .Property(s => s.Title)
                 .HasMaxLength(80)
                 .IsRequired();
+
+            modelBuilder.Entity<Course>()
+                .HasMany(c => c.Students)
+                .WithMany(s => s.Courses)
+                .UsingEntity(j => j.ToTable("CourseStudent"));
         }
     }
 }
