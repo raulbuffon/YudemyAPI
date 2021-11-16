@@ -21,17 +21,26 @@ namespace YudemyAPI.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Course>()
-                .HasOne(c => c.Author)
-                .WithMany(a => a.Courses)
-                .HasForeignKey(c => c.AuthorId);
+                .Property(c => c.Description)
+                .HasMaxLength(1000);
 
             modelBuilder.Entity<Course>()
                 .Property(c => c.Title)
                 .HasMaxLength(100);
 
             modelBuilder.Entity<Course>()
-                .Property(c => c.Description)
-                .HasMaxLength(1000);
+                .HasOne(c => c.Author)
+                .WithMany(a => a.Courses)
+                .IsRequired();
+
+            modelBuilder.Entity<Course>()
+                .HasMany(c => c.Sections)
+                .WithOne();
+
+            modelBuilder.Entity<Section>()
+                .Property(s => s.Title)
+                .HasMaxLength(80)
+                .IsRequired();
         }
     }
 }
