@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YudemyAPI.Context;
+using YudemyAPI.Services;
 
 namespace YudemyAPI
 {
@@ -32,6 +33,8 @@ namespace YudemyAPI
             services.AddDbContext<YudemyContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
+
+            services.AddScoped<AuthorService>();
 
             services.AddControllers();
 

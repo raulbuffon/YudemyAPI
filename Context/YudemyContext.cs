@@ -28,6 +28,11 @@ namespace YudemyAPI.Context
                 .Property(c => c.Title)
                 .HasMaxLength(100);
 
+            modelBuilder.Entity<Section>()
+                .Property(s => s.Title)
+                .HasMaxLength(80)
+                .IsRequired();
+
             modelBuilder.Entity<Course>()
                 .HasOne(c => c.Author)
                 .WithMany(a => a.Courses)
@@ -36,11 +41,6 @@ namespace YudemyAPI.Context
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Sections)
                 .WithOne();
-
-            modelBuilder.Entity<Section>()
-                .Property(s => s.Title)
-                .HasMaxLength(80)
-                .IsRequired();
 
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Students)
