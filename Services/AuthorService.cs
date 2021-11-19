@@ -21,5 +21,19 @@ namespace YudemyAPI.Services
             var result = _context.Authors.ToList();
             return result;
         }
+
+        public Author GetById(int id)
+        {
+            var result = _context.Authors.Where(x => x.Id == id).First();
+            return result;
+        }
+
+        public Author CreateAuthor(Author author)
+        {
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+
+            return author;
+        }
     }
 }
