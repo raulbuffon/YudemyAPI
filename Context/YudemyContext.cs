@@ -20,17 +20,26 @@ namespace YudemyAPI.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Author>()
+                .Property(a => a.Name)
+                .IsRequired();
+
             modelBuilder.Entity<Course>()
                 .Property(c => c.Description)
                 .HasMaxLength(1000);
 
             modelBuilder.Entity<Course>()
                 .Property(c => c.Title)
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
             modelBuilder.Entity<Section>()
                 .Property(s => s.Title)
                 .HasMaxLength(80)
+                .IsRequired();
+
+            modelBuilder.Entity<Student>()
+                .Property(s => s.Name)
                 .IsRequired();
 
             modelBuilder.Entity<Course>()
