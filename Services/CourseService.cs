@@ -27,7 +27,5 @@ namespace YudemyAPI.Services
             var result = _context.Courses.Where(x => x.Id == id).First();
             return result;
         }
-
-
     }
 }

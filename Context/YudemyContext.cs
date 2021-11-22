@@ -49,7 +49,7 @@ namespace YudemyAPI.Context
 
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Sections)
-                .WithOne();
+                .WithOne(s => s.Course);
 
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.Students)
