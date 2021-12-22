@@ -34,7 +34,9 @@ namespace YudemyAPI
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
+            services.AddScoped<AuthorRepository>();
             services.AddScoped<AuthorService>();
+
             services.AddScoped<CourseService>();
 
             services.AddControllers();

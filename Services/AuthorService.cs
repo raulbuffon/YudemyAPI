@@ -4,36 +4,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using YudemyAPI.Context;
 using YudemyAPI.Models;
+using YudemyAPI.Models.DTO;
 
 namespace YudemyAPI.Services
 {
     public class AuthorService
     {
-        private readonly YudemyContext _context;
+        private readonly AuthorRepository authorRepository;
 
-        public AuthorService(YudemyContext yudemyContext)
+        public AuthorService(AuthorRepository authorRepository)
         {
-            this._context = yudemyContext;
+            this.authorRepository = authorRepository;
         }
 
         public IEnumerable<Author> GetAllAuthors()
         {
-            var result = _context.Authors.ToList();
-            return result;
+            return authorRepository.GetAllAuthors();
         }
 
         public Author GetById(int id)
         {
-            var result = _context.Authors.Where(x => x.Id == id).First();
-            return result;
+            return authorRepository.GetById(id);
         }
 
-        public Author CreateAuthor(Author author)
+        public Author CreateAuthor(AuthorDTO author)
         {
-            _context.Authors.Add(author);
-            _context.SaveChanges();
-
-            return author;
+            return authorRepository.CreateAuthor(author);
         }
     }
 }

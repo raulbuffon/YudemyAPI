@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YudemyAPI.Models;
+using YudemyAPI.Models.DTO;
 using YudemyAPI.Services;
 
 namespace YudemyAPI.Controllers
@@ -36,11 +37,11 @@ namespace YudemyAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Author author)
+        public IActionResult Create([FromBody]AuthorDTO author)
         {
-            authorService.CreateAuthor(author);
+            var result = authorService.CreateAuthor(author);
 
-            return CreatedAtRoute("GetAuthorById", new { id = author.Id.ToString() }, author);
+            return CreatedAtRoute("GetAuthorById", new { id = result.Id.ToString() }, result);
         }
     }
 }
