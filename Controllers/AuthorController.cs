@@ -28,7 +28,7 @@ namespace YudemyAPI.Controllers
             return authorService.GetAllAuthors();
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetAuthorById")]
         public IActionResult GetById(int id)
         {
             var result = authorService.GetById(id);
@@ -40,7 +40,7 @@ namespace YudemyAPI.Controllers
         {
             authorService.CreateAuthor(author);
 
-            return CreatedAtRoute("GetById", new { id = author.Id.ToString() }, author);
+            return CreatedAtRoute("GetAuthorById", new { id = author.Id.ToString() }, author);
         }
     }
 }

@@ -35,6 +35,7 @@ namespace YudemyAPI
             );
 
             services.AddScoped<AuthorService>();
+            services.AddScoped<CourseService>();
 
             services.AddControllers();
 

@@ -16,7 +16,7 @@ namespace YudemyAPI.Services
             this._context = yudemyContext;
         }
 
-        public IEnumerable<Course> GetAll()
+        public IEnumerable<Course> GetAllCourses()
         {
             var result = _context.Courses.ToList();
             return result;
@@ -26,6 +26,14 @@ namespace YudemyAPI.Services
         {
             var result = _context.Courses.Where(x => x.Id == id).First();
             return result;
+        }
+
+        public Course CreateCourse(Course course)
+        {
+            _context.Courses.Add(course);
+            _context.SaveChanges();
+
+            return course;
         }
     }
 }
