@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using YudemyAPI.Context;
 using YudemyAPI.Models;
 using YudemyAPI.Models.DTO;
+using YudemyAPI.Repositories;
 
 namespace YudemyAPI.Services
 {

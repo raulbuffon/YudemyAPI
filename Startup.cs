@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YudemyAPI.Context;
+using YudemyAPI.Repositories;
 using YudemyAPI.Services;
 
 namespace YudemyAPI
@@ -37,6 +38,7 @@ namespace YudemyAPI
             services.AddScoped<AuthorRepository>();
             services.AddScoped<AuthorService>();
 
+            services.AddScoped<CourseRepository>();
             services.AddScoped<CourseService>();
 
             services.AddControllers();

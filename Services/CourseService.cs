@@ -4,36 +4,41 @@ using System.Linq;
 using System.Threading.Tasks;
 using YudemyAPI.Context;
 using YudemyAPI.Models;
+using YudemyAPI.Models.DTO;
+using YudemyAPI.Repositories;
 
 namespace YudemyAPI.Services
 {
     public class CourseService
     {
-        private readonly YudemyContext _context;
+        private readonly CourseRepository courseRepository;
 
-        public CourseService(YudemyContext yudemyContext)
+        public CourseService(CourseRepository courseRepository)
         {
-            this._context = yudemyContext;
+            this.courseRepository = courseRepository;
         }
 
         public IEnumerable<Course> GetAllCourses()
         {
-            var result = _context.Courses.ToList();
-            return result;
+            return courseRepository.GetAllCourses();
         }
 
         public Course GetById(int id)
         {
-            var result = _context.Courses.Where(x => x.Id == id).First();
-            return result;
+            return courseRepository.GetById(id);
         }
 
-        public Course CreateCourse(Course course)
+        public Course CreateCourse(CourseDTO course)
         {
-            _context.Courses.Add(course);
-            _context.SaveChanges();
+            Course newCourse = new Course
+            {
+                Title = course.Title,
+                Description = course.Description,
+                Price = course.Price,
+                AuthorId = course.AuthorId
+            };
 
-            return course;
+            return courseRepository.CreateCourse(newCourse);
         }
     }
 }

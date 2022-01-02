@@ -8,33 +8,33 @@ using YudemyAPI.Models.DTO;
 
 namespace YudemyAPI.Repositories
 {
-    public class AuthorRepository
+    public class CourseRepository
     {
         private readonly YudemyContext _context;
 
-        public AuthorRepository(YudemyContext yudemyContext)
+        public CourseRepository(YudemyContext yudemyContext)
         {
             this._context = yudemyContext;
         }
 
-        public IEnumerable<Author> GetAllAuthors()
+        public IEnumerable<Course> GetAllCourses()
         {
-            var result = _context.Authors.ToList();
+            var result = _context.Courses.ToList();
             return result;
         }
 
-        public Author GetById(int id)
+        public Course GetById(int id)
         {
-            var result = _context.Authors.Where(x => x.Id == id).First();
+            var result = _context.Courses.Where(x => x.Id == id).First();
             return result;
         }
 
-        public Author CreateAuthor(Author author)
+        public Course CreateCourse(Course course)
         {
-            _context.Authors.Add(author);
+            _context.Courses.Add(course);
             _context.SaveChanges();
 
-            return author;
+            return course;
         }
     }
 }
