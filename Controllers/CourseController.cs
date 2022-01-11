@@ -26,20 +26,24 @@ namespace YudemyAPI.Controllers
         [HttpGet]
         public IEnumerable<Course> Get()
         {
-            return courseService.GetAllCourses();
+            _logger.LogInformation("Executing api/course -> Get All");
+            return courseService.GetAll();
         }
 
         [HttpGet("{id}", Name = "GetCourseById")]
         public IActionResult GetById(int id)
         {
+            _logger.LogInformation("Executing api/course/id -> Get By ID " + id.ToString());
             var result = courseService.GetById(id);
+
             return Ok(result);
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] CourseDTO course)
         {
-            var result = courseService.CreateCourse(course);
+            _logger.LogInformation("Executing api/course -> Post");
+            var result = courseService.Create(course);
 
             return CreatedAtRoute("GetCourseById", new { id = result.Id.ToString() }, result);
         }
