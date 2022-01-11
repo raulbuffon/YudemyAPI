@@ -17,7 +17,7 @@ namespace YudemyAPI.Repositories
             this._context = yudemyContext;
         }
 
-        public IEnumerable<Author> GetAllAuthors()
+        public IEnumerable<Author> GetAll()
         {
             var result = _context.Authors.ToList();
             return result;
@@ -29,7 +29,7 @@ namespace YudemyAPI.Repositories
             return result;
         }
 
-        public Author CreateAuthor(Author author)
+        public Author Create(Author author)
         {
             _context.Authors.Add(author);
             _context.SaveChanges();

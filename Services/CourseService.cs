@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +12,18 @@ namespace YudemyAPI.Services
 {
     public class CourseService
     {
+        private readonly ILogger<CourseService> _logger;
         private readonly CourseRepository courseRepository;
 
-        public CourseService(CourseRepository courseRepository)
+        public CourseService(ILogger<CourseService> logger, CourseRepository courseRepository)
         {
+            _logger = logger;
             this.courseRepository = courseRepository;
         }
 
-        public IEnumerable<Course> GetAllCourses()
+        public IEnumerable<Course> GetAll()
         {
-            return courseRepository.GetAllCourses();
+            return courseRepository.GetAll();
         }
 
         public Course GetById(int id)
@@ -28,7 +31,7 @@ namespace YudemyAPI.Services
             return courseRepository.GetById(id);
         }
 
-        public Course CreateCourse(CourseDTO course)
+        public Course Create(CourseDTO course)
         {
             Course newCourse = new Course
             {
@@ -38,7 +41,7 @@ namespace YudemyAPI.Services
                 AuthorId = course.AuthorId
             };
 
-            return courseRepository.CreateCourse(newCourse);
+            return courseRepository.Create(newCourse);
         }
     }
 }

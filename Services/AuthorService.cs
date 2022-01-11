@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +12,18 @@ namespace YudemyAPI.Services
 {
     public class AuthorService
     {
+        private readonly ILogger<AuthorService> _logger;
         private readonly AuthorRepository authorRepository;
 
-        public AuthorService(AuthorRepository authorRepository)
+        public AuthorService(ILogger<AuthorService> logger, AuthorRepository authorRepository)
         {
+            _logger = logger;
             this.authorRepository = authorRepository;
         }
 
-        public IEnumerable<Author> GetAllAuthors()
+        public IEnumerable<Author> GetAll()
         {
-            return authorRepository.GetAllAuthors();
+            return authorRepository.GetAll();
         }
 
         public Author GetById(int id)
@@ -28,14 +31,14 @@ namespace YudemyAPI.Services
             return authorRepository.GetById(id);
         }
 
-        public Author CreateAuthor(AuthorDTO author)
+        public Author Create(AuthorDTO author)
         {
             Author newAuthor = new Author
             {
                 Name = author.Name
             };
 
-            return authorRepository.CreateAuthor(newAuthor);
+            return authorRepository.Create(newAuthor);
         }
     }
 }

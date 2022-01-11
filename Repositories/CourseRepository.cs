@@ -17,7 +17,7 @@ namespace YudemyAPI.Repositories
             this._context = yudemyContext;
         }
 
-        public IEnumerable<Course> GetAllCourses()
+        public IEnumerable<Course> GetAll()
         {
             var result = _context.Courses.ToList();
             return result;
@@ -29,7 +29,7 @@ namespace YudemyAPI.Repositories
             return result;
         }
 
-        public Course CreateCourse(Course course)
+        public Course Create(Course course)
         {
             _context.Courses.Add(course);
             _context.SaveChanges();
