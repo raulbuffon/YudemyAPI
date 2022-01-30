@@ -33,10 +33,7 @@ namespace YudemyAPI.Services
 
         public Author Create(AuthorDTO author)
         {
-            Author newAuthor = new Author
-            {
-                Name = author.Name
-            };
+            Author newAuthor = new Author(author.Name);
 
             return authorRepository.Create(newAuthor);
         }

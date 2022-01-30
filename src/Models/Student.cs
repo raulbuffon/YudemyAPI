@@ -7,13 +7,20 @@ namespace YudemyAPI.Models
 {
     public class Student
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public int Age { get; private set; }
+        public ICollection<Course> Courses { get; private set; }
 
         public Student()
         {
             Courses = new HashSet<Course>();
+        }
+
+        public Student(string name, int age) : this()
+        {
+            Name = name;
+            Age = age;
         }
     }
 }

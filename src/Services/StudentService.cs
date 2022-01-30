@@ -32,10 +32,7 @@ namespace YudemyAPI.Services
 
         public Student Create(StudentDTO student)
         {
-            Student newStudent = new Student
-            {
-                Name = student.Name
-            };
+            Student newStudent = new Student(student.Name, student.Age);
 
             return studentRepository.Create(newStudent);
         }

@@ -33,13 +33,7 @@ namespace YudemyAPI.Services
 
         public Course Create(CourseDTO course)
         {
-            Course newCourse = new Course
-            {
-                Title = course.Title,
-                Description = course.Description,
-                Price = course.Price,
-                AuthorId = course.AuthorId
-            };
+            Course newCourse = new Course(course.Title, course.Description, course.Price, course.AuthorId);
 
             return courseRepository.Create(newCourse);
         }
