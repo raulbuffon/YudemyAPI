@@ -25,7 +25,7 @@ namespace YudemyAPI.Repositories
 
         public Course GetById(int id)
         {
-            var result = _context.Courses.Where(x => x.Id == id).First();
+            var result = _context.Courses.Find(id);
             return result;
         }
 

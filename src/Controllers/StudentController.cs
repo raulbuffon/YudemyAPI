@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YudemyAPI.Models;
+using YudemyAPI.Models.DTO;
 using YudemyAPI.Services;
 
 namespace YudemyAPI.Controllers
@@ -20,6 +22,31 @@ namespace YudemyAPI.Controllers
         {
             _logger = logger;
             this.studentService = studentService;
+        }
+
+        [HttpGet]
+        public IEnumerable<Student> Get()
+        {
+            _logger.LogInformation("Executing api/student -> Get All");
+            return studentService.GetAll();
+        }
+
+        [HttpGet("{id}", Name = "GetStudentById")]
+        public IActionResult GetById(int id)
+        {
+            _logger.LogInformation("Executing api/student/id -> Get By ID " + id.ToString());
+            var result = studentService.GetById(id);
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] StudentDTO student)
+        {
+            _logger.LogInformation("Executing api/student -> Post");
+            var result = studentService.Create(student);
+
+            return CreatedAtRoute("GetStudentById", new { id = result.Id.ToString() }, result);
         }
     }
 }

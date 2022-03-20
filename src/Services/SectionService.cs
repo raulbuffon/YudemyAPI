@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YudemyAPI.Models;
+using YudemyAPI.Models.DTO;
 using YudemyAPI.Repositories;
 
 namespace YudemyAPI.Services
@@ -16,6 +18,23 @@ namespace YudemyAPI.Services
         {
             _logger = logger;
             this.sectionRepository = sectionRepository;
+        }
+
+        public IEnumerable<Section> GetAll()
+        {
+            return sectionRepository.GetAll();
+        }
+
+        public Section GetById(int id)
+        {
+            return sectionRepository.GetById(id);
+        }
+
+        public Section Create(SectionDTO section)
+        {
+            Section newSection = new Section(section.Title, section.CourseId);
+
+            return sectionRepository.Create(newSection);
         }
     }
 }

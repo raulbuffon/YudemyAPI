@@ -41,6 +41,12 @@ namespace YudemyAPI
             services.AddScoped<CourseRepository>();
             services.AddScoped<CourseService>();
 
+            services.AddScoped<SectionRepository>();
+            services.AddScoped<SectionService>();
+
+            services.AddScoped<StudentRepository>();
+            services.AddScoped<StudentService>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

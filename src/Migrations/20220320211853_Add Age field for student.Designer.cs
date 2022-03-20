@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YudemyAPI.Context;
 
 namespace YudemyAPI.Migrations
 {
     [DbContext(typeof(YudemyContext))]
-    partial class YudemyContextModelSnapshot : ModelSnapshot
+    [Migration("20220320211853_Add Age field for student")]
+    partial class AddAgefieldforstudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

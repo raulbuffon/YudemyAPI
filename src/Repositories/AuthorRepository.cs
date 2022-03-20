@@ -25,7 +25,7 @@ namespace YudemyAPI.Repositories
 
         public Author GetById(int id)
         {
-            var result = _context.Authors.Where(x => x.Id == id).First();
+            var result = _context.Authors.Find(id);
             return result;
         }
 
