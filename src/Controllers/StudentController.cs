@@ -41,12 +41,19 @@ namespace YudemyAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] StudentDTO student)
+        public IActionResult Create([FromBody] StudentRequest student)
         {
             _logger.LogInformation("Executing api/student -> Post");
             var result = studentService.Create(student);
 
             return CreatedAtRoute("GetStudentById", new { id = result.Id.ToString() }, result);
+        }
+
+        [HttpPost("buyCourse")]
+        public IActionResult BuyCourse([FromBody] BuyCourseRequest buyCourseRequest)
+        {
+            var result = studentService.BuyCourse(buyCourseRequest);
+            return Ok();
         }
     }
 }

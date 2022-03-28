@@ -35,5 +35,15 @@ namespace YudemyAPI.Repositories
 
             return student;
         }
+
+        public Student Update(Student newStudent)
+        {
+            Student student = GetById(newStudent.Id);
+
+            _context.Entry(student).CurrentValues.SetValues(newStudent);
+            _context.SaveChanges();
+
+            return student;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace YudemyAPI.Services
             return authorRepository.GetById(id);
         }
 
-        public Author Create(AuthorDTO author)
+        public Author Create(AuthorRequest author)
         {
             Author newAuthor = new Author(author.Name);
 

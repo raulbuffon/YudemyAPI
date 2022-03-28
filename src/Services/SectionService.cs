@@ -30,7 +30,7 @@ namespace YudemyAPI.Services
             return sectionRepository.GetById(id);
         }
 
-        public Section Create(SectionDTO section)
+        public Section Create(SectionRequest section)
         {
             Section newSection = new Section(section.Title, section.CourseId);
 

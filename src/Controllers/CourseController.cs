@@ -40,7 +40,7 @@ namespace YudemyAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CourseDTO course)
+        public IActionResult Create([FromBody] CourseRequest course)
         {
             _logger.LogInformation("Executing api/course -> Post");
             var result = courseService.Create(course);

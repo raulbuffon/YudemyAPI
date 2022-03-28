@@ -31,7 +31,7 @@ namespace YudemyAPI.Services
             return courseRepository.GetById(id);
         }
 
-        public Course Create(CourseDTO course)
+        public Course Create(CourseRequest course)
         {
             Course newCourse = new Course(course.Title, course.Description, course.Price, course.AuthorId);
 

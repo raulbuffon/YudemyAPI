@@ -40,7 +40,7 @@ namespace YudemyAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]AuthorDTO author)
+        public IActionResult Create([FromBody]AuthorRequest author)
         {
             _logger.LogInformation("Executing api/author -> Post");
             var result = authorService.Create(author);

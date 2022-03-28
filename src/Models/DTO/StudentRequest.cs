@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace YudemyAPI.Models.DTO
 {
-    public class StudentDTO
+    public class StudentRequest
     {
         public string Name { get; set; }
         public int Age { get; set; }

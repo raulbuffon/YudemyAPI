@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace YudemyAPI.Models.DTO
 {
-    public class AuthorDTO
+    public class AuthorRequest
     {
         public string Name { get; set; }
     }
