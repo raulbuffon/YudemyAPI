@@ -39,12 +39,15 @@ namespace YudemyAPI.Services
             return studentRepository.Create(newStudent);
         }
 
-        public bool BuyCourse(BuyCourseRequest buyCourseRequest)
+        public Student BuyCourse(BuyCourseRequest buyCourseRequest)
         {
             var course = courseService.GetById(buyCourseRequest.CourseId);
-            var student = studentRepository.GetById(buyCourseRequest.StudentId);
+            var student = studentRepository.GetWithCoursesById(buyCourseRequest.StudentId);
 
-            // TODO verify if student already have this course
+            if(student.Courses.Contains(course))
+            {
+                return null;
+            }
 
             if (student.Funds >= course.Price)
             {
@@ -53,10 +56,10 @@ namespace YudemyAPI.Services
 
                 studentRepository.Update(student);
 
-                return true;
+                return student;
             }
 
-            return false;
+            return null;
         }
     }
 }

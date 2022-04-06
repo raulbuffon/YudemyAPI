@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace YudemyAPI.Repositories
         public Student GetById(int id)
         {
             var result = _context.Students.Find(id);
+            return result;
+        }
+
+        public Student GetWithCoursesById(int id)
+        {
+            var result = _context.Students.Where(s => s.Id == id).Include(c => c.Courses).First();
             return result;
         }
 

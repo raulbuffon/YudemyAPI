@@ -53,7 +53,11 @@ namespace YudemyAPI.Controllers
         public IActionResult BuyCourse([FromBody] BuyCourseRequest buyCourseRequest)
         {
             var result = studentService.BuyCourse(buyCourseRequest);
-            return Ok();
+
+            if (result == null)
+                return BadRequest();
+
+            return Ok(result);
         }
     }
 }
